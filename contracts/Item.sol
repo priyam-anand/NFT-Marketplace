@@ -6,6 +6,9 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract Item is ERC721URIStorage{
 
+event Mint(uint _tokenId);
+
+
     uint private tokenId;
     address private contractAddress;
 
@@ -15,13 +18,13 @@ contract Item is ERC721URIStorage{
         tokenId = 1;
     }
 
-    function createToken(string memory _tokenURI) public returns(uint){
+    function createToken(string memory _tokenURI) public {
         
         _mint(msg.sender,tokenId);
         _setTokenURI(tokenId, _tokenURI);
         setApprovalForAll(contractAddress,true);
         tokenId++;
 
-        return tokenId-1;
+        emit Mint(tokenId-1);
     }
 }

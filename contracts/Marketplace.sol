@@ -24,7 +24,7 @@ contract Marketplace {
             - Owner of the Marketplace
             - Commission per sale of NFT
      */
-    uint256 private itemID;
+    uint256 public itemID;
     address payable private owner;
     uint256 private commission;
 
@@ -39,6 +39,7 @@ contract Marketplace {
     constructor() {
         owner = payable(msg.sender);
         commission = 0.00025 ether;
+        itemID = 1;
     }
 
     /*
@@ -231,7 +232,7 @@ contract Marketplace {
     modifier TokenOwnerOnly(address itemContract, uint256 tokenId) {
         require(
             ERC721(itemContract).ownerOf(tokenId) == msg.sender,
-            "Can only list your own token"
+            "Can only add your own token"
         );
         _;
     }

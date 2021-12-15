@@ -1,12 +1,80 @@
 const Marketplace = artifacts.require("Marketplace");
 const Item = artifacts.require("Item");
+const { expectRevert } = require('@openzeppelin/test-helpers');
+const { web3 } = require('@openzeppelin/test-helpers/src/setup');
+
 
 contract("Marketplace", function (accounts) {
+
+  let marketplace;
+  let item;
+
+  beforeEach(async () => {
+    marketplace = await Marketplace.new();
+    item = await Item.new(marketplace.address);
+  })
+
   it("should assert true", async function () {
     await Marketplace.deployed();
-    return assert.isTrue(true);
+    assert.isTrue(true);
   });
 
+  it("should get Item contract address", async () => {
+    await Item.deployed();
+    const address = Item.address;
+    assert(address != 0);
+  });
 
+  it("should get Commission fee", async () => {
+    const fee = web3.utils.toBN(await marketplace.getCommission());
+    assert(fee.toNumber() === 250000000000000);
+  });
+
+  it("should create new ERC721 Token", async () => {
+    const token = await item.createToken("https://sampleLink1.com");
+    const tokenID = (token.logs[2].args[0]).toNumber();
+    assert(tokenID === 1);
+  });
+
+  it("should not create Item if not owner of token", async () => {
+    const token = await item.createToken("https://sampleLink1.com");
+    const tokenId = (token.logs[2].args[0]).toNumber();
+
+    expectRevert(
+      marketplace.createItem(item.address,tokenId,{value:250000000000000,from:accounts[1]}),
+      "Can only add your own token"
+    )
+  })
+
+  it("should create Item", async () => {
+    const token = await item.createToken("https://sampleLink1.com");
+    const tokenId = (token.logs[2].args[0]).toNumber();
+    await marketplace.createItem(item.address,tokenId,{value:250000000000000,from:accounts[0]});
+    
+    const itemId = await marketplace.itemID();
+    assert(itemId.toNumber() === 2);
+  })
+
+  it("should not list Item if not owner",async()=>{
+    const token = await item.createToken("https://sampleLink1.com");
+    const tokenId = (token.logs[2].args[0]).toNumber();
+    await marketplace.createItem(item.address,tokenId,{value:250000000000000,from:accounts[0]});
+    
+    const itemId = await marketplace.itemID();
+    expectRevert(
+      marketplace.listItem(itemId.toNumber()-1,500,{from:accounts[1]}),
+      "Only item owner can list"
+    )
+  });
+
+  it("should list Item", async () => {
+    const token = await item.createToken("https://sampleLink1.com");
+    const tokenId = (token.logs[2].args[0]).toNumber();
+    await marketplace.createItem(item.address,tokenId,{value:250000000000000,from:accounts[0]});
+    
+    const itemId = await marketplace.itemID();
+    await marketplace.listItem(itemId.toNumber()-1,500,{from:accounts[0]}),
+    assert(true);
+  })
 
 });
