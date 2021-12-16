@@ -19,7 +19,7 @@ const Card = () => {
                         <span>Price</span>
                         <span>4.89 ETH</span>
                     </div>
-                    <button className="btn btn-primary btn-lg"> Buy </button>
+                    <button className="sell-btn"> Buy </button>
                 </div>
             </div>
         </div>

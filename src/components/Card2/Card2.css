@@ -1,0 +1,118 @@
+.activity {
+  margin-top: 20px;
+  border-radius: 16px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #33333a;
+}
+.activity__cover {
+  width: 100px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.activity__cover img {
+  width: 100%;
+}
+.activity__content {
+  margin-left: 20px;
+}
+.activity__title {
+  display: block;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin-bottom: 15px;
+  transition: color 0.5s ease;
+}
+.activity__title a {
+  text-decoration: none;
+  color: #fff;
+}
+.activity__title a:hover {
+  color: #6164ff;
+  transition: 0.2s ease-in;
+}
+.activity__text {
+  font-size: 16px;
+  line-height: 26px;
+  color: #bdbdbd;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.sell-btn {
+  width: auto;
+  min-width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 12px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  z-index: 2;
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  padding: 0 20px;
+  background-color: #6164ff;
+  color: #fff;
+}
+
+.sell-btn:hover{
+    background-color: #313138;
+    color: #6164ff;
+    transition: 0.2s ease-in;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.list input{
+    width: 30%;
+    margin-right: 2rem;
+    height: 95%;
+}
+
+@media (min-width: 576px) {
+  .activity__cover {
+    width: 120px;
+  }
+  .activity__content {
+    width: calc(100% - 140px);
+  }
+}
+@media (min-width: 768px) {
+  .activity {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 1200px) {
+  .activity__cover {
+    width: 140px;
+  }
+  .activity__content {
+    width: calc(100% - 160px);
+  }
+}
