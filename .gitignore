@@ -16,6 +16,7 @@
 .env.local
 .env.development.local
 .env.test.local
+/src/chori.css
 .env.production.local
 
 npm-debug.log*

@@ -1,0 +1,11 @@
+.topbar-links {
+  text-decoration: none;
+  color: white;
+}
+.topbar-links:hover {
+  color: rgb(199, 199, 199);
+}
+
+.nav-links{
+    margin-left: auto;
+}
