@@ -1,6 +1,6 @@
 .home {
-  border-bottom: 1 px solid #222227;
   background-color: #181818;
+  border-bottom: 1px solid #222227;
 }
 
 .home-content {
@@ -103,3 +103,108 @@
     margin-top: 40px;
   }
 }
+
+.feature-container{
+  margin-top: 2rem;
+  background-color: #181818;
+}
+
+.feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222227;
+  }
+  .feature-head{
+    color: white;
+  }
+  .feature-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: rgba(97, 100, 255, 0.15);
+  }
+  .feature-icon svg {
+    fill: #6164ff;
+    width: auto;
+    height: 26px;
+  }
+  .feature-icon--purple {
+    background-color: rgba(128, 81, 212, 0.15);
+  }
+  .feature-icon--purple svg {
+    fill: #8051d4;
+  }
+  .feature-icon--red {
+    background-color: rgba(235, 87, 87, 0.15);
+  }
+  .feature-icon--red svg {
+    fill: #eb5757;
+  }
+  .feature-icon--blue {
+    background-color: rgba(47, 128, 237, 0.15);
+  }
+  .feature-icon--blue svg {
+    fill: #2f80ed;
+  }
+  .feature-icon--green {
+    background-color: rgba(37, 165, 106, 0.15);
+  }
+  .feature-icon--green svg {
+    fill: #25a56a;
+  }
+  .feature-title {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 0;
+    margin-left: 15px;
+    width: calc(100% - 65px);
+  }
+  .feature-text {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 26px;
+    color: #bdbdbd;
+    margin-bottom: 0;
+    margin-top: 15px;
+  }
+  .feature-text a {
+    color: #6164ff;
+    text-decoration: underline;
+  }
+  .feature-text a:hover {
+    color: #6164ff;
+    text-decoration: none;
+  }
+  .feature--last {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  @media (min-width: 768px) {
+    .feature {
+      margin-top: 30px;
+      padding-bottom: 0;
+      border-bottom: none;
+      padding-right: 20px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .feature {
+      margin-top: 40px;
+    }
+}
+

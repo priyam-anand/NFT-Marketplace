@@ -1,0 +1,102 @@
+.my-card {
+    margin-top: 20px;
+    border-radius: 16px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #36363d;
+    background-color: #16151a;
+  }
+  .card__cover {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .card__cover img {
+    width: 100%;
+  }
+  .card__desc{
+    color: white;
+  }
+  .card__title {
+    display: block;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    margin-bottom: 15px;
+    transition: color 0.5s ease;
+  }
+  .card__title a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .card__title a:hover {
+    color: #6164ff;
+    transition: 0.2s ease-in;
+  }
+  
+  .card__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    border-top: 1px solid #36363d;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+  .card__price {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .card__price span:first-child {
+    font-size: 14px;
+    line-height: 100%;
+    color: #bdbdbd;
+  }
+  .card__price span:last-child {
+    font-size: 18px;
+    line-height: 100%;
+    color: #fff;
+    margin-top: 10px;
+  }
+  .card__time {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 32px;
+    border-radius: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 2px solid #6164ff;
+    color: #fff;
+    font-size: 12px;
+    background-color: #222227;
+    font-weight: 400;
+    padding: 0 12px;
+  }
+  @media (min-width: 768px) {
+    .card {
+      margin-top: 30px;
+    }
+  }

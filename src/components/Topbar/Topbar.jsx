@@ -5,7 +5,7 @@ import "./Topbar.css";
 
 const Topbar = () => {
     return (
-        <div>
+        <div className="fixed-top">
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand>
@@ -16,25 +16,25 @@ const Topbar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="nav-links">
-                            <Nav.Link>
-                                <Link to="/market" className="topbar-links">
-                                    Marketplace
-                                </Link>
+                            <Nav.Link as={Link} to="/explore">
+                                <span className='topbar-links'>
+                                    Explore
+                                </span>
                             </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/my-nft" className="topbar-links">
-                                    My NFTs
-                                </Link>
+                            <Nav.Link as={Link} to="/my-collection">
+                                <span className="topbar-links">
+                                    My Collection
+                                </span>
                             </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/add-item" className="topbar-links">
+                            <Nav.Link as={Link} to="/add-item">
+                                <span className="topbar-links">
                                     Add Item
-                                </Link>
+                                </span>
                             </Nav.Link>
-                            <Nav.Link>
-                                <Link to="/create-nft" className="topbar-links">
+                            <Nav.Link as={Link} to="/create-nft">
+                                <span className="topbar-links">
                                     Create NFT
-                                </Link>
+                                </span>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
