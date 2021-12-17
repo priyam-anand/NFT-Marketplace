@@ -1,6 +1,6 @@
 import React from 'react'
 import "./CreateNFT.css";
-
+import Web3 from "web3";
 const CreateNFT = () => {
     return (
         <>
