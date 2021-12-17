@@ -1,0 +1,180 @@
+.main__title h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 30px;
+  line-height: 140%;
+  margin-bottom: 0;
+  position: relative;
+  margin-top: 3rem;
+}
+.sign__form {
+  background-color: #16151a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 30px 20px;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #222227;
+}
+.sign__form--create {
+  margin-top: 20px;
+  max-width: 100%;
+  padding: 20px 20px 5px;
+  align-items: flex-start;
+}
+.sign__form--create .sign__btn {
+  margin: 0 0 15px;
+}
+
+.sign__form--create .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.sign__form--create .col-12 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.sign__title {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.sign__label {
+  font-weight: 400;
+  font-size: 14px;
+  color: #bdbdbd;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+.sign__input {
+  background-color: #222227;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  height: 46px;
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  padding: 0 20px;
+  font-family: "Inter", sans-serif;
+}
+.sign__input:focus {
+  border-color: #6164ff;
+}
+.sign__textarea {
+  background-color: #222227;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  height: 144px;
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  padding: 15px 20px;
+  resize: none;
+  font-family: "Inter", sans-serif;
+}
+.sign__textarea:focus {
+  border-color: #6164ff;
+}
+.sign__group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.sign__btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px;
+  background-color: #6164ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin: 15px auto;
+  border: none;
+}
+.sign__btn:hover {
+  color: #6164ff;
+  background-color: #222227;
+  transition: 0.15s ease-out;
+}
+
+.sign__file {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  display: block;
+}
+.sign__file input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  z-index: 1;
+}
+.sign__file label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  height: 46px;
+  color: #bdbdbd;
+  padding: 0 60px 0 20px;
+  background-color: #222227;
+  margin: 0;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+.sign__file label:hover {
+  color: #fff;
+}
+@media (min-width: 576px) {
+  .sign__form {
+    padding: 40px;
+  }
+  .sign__form--create {
+    padding: 20px 20px 5px;
+  }
+}
+@media (min-width: 768px) {
+  .sign__form--create {
+    margin-top: 30px;
+  }
+  .sign__form--create .sign__btn {
+    margin: 10px 0 15px;
+  }
+}
