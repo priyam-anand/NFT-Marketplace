@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 const Card2 = ({ owned }) => {
     return (
         <>
-            <div class="col-12 col-lg-6">
-                <div class="activity">
-                    <span class="activity__cover">
+            <div className="col-12 col-lg-6">
+                <div className="activity">
+                    <span className="activity__cover">
                         <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/43YAWLITTZJLZIQTCP2JSS4KSM.jpg" alt="" />
                     </span>
-                    <div class="activity__content">
-                        <h4 class="activity__title">
+                    <div className="activity__content">
+                        <h4 className="activity__title">
                             <Link to="/my-collection">Walking on Air</Link>
                         </h4>
-                        <p class="activity__text">
+                        <p className="activity__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore totam, natus aperiam mollitia aut adipisci.
                         </p>
 

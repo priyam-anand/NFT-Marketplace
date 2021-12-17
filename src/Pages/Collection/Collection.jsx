@@ -5,18 +5,18 @@ import "./Collection.css";
 const Collection = () => {
     return (
         <>
-            <div class="container top-space">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="main__title main__title--page">
+            <div className="container top-space">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="main__title main__title--page">
                             <h1>My Owned</h1>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12 order-xl-1">
-                        <div class="row">
+                <div className="row">
+                    <div className="col-12 order-xl-1">
+                        <div className="row">
                             <Card2 />
                             <Card2 />
                             <Card2 />
@@ -26,14 +26,14 @@ const Collection = () => {
                 </div>
                 <hr style={{"color":"white", "marginTop":"2rem"}}/>
 
-                <div class="col-12">
-                        <div class="main__title main__title--page">
+                <div className="col-12">
+                        <div className="main__title main__title--page">
                             <h1>My Minted</h1>
                         </div>
                     </div>
                 <div className="row">
-                    <div class="col-12 order-xl-1">
-                        <div class="row">
+                    <div className="col-12 order-xl-1">
+                        <div className="row">
                             <Card2 owned={true}/>
                             <Card2 owned={true}/><Card2 owned={true}/>
                         </div>

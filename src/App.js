@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Topbar from './components/Topbar/Topbar.jsx';
 import Home from './Pages/Home/Home.jsx';
 import "./App.css";
@@ -27,6 +27,9 @@ const App = () => {
         </Route>
         <Route exact path="/add-item">
           <AddItem/>
+        </Route>
+        <Route>
+          <Redirect to="/"/>
         </Route>
       </Switch>
     </>
