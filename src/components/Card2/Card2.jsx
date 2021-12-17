@@ -2,7 +2,8 @@ import React from 'react'
 import "./Card2.css";
 import { Link } from "react-router-dom";
 
-const Card2 = ({ owned }) => {
+const Card2 = ({ owned , data}) => {
+    console.log(data);
     return (
         <>
             <div className="col-12 col-lg-6">

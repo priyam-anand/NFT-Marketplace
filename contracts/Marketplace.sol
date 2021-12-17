@@ -175,7 +175,7 @@ contract Marketplace {
         uint256 curr = 0;
         for (uint256 i = 0; i < itemID; i++) {
             NFT_Item memory item = idToItem[i];
-            if (!idToItem[i].listed) {
+            if (item.listed == true) {
                 itemId[curr] = item.itemId;
                 itemContract[curr] = item.itemContract;
                 tokenId[curr] = item.tokenId;
@@ -226,7 +226,7 @@ contract Marketplace {
         uint256 curr = 0;
         for (uint256 i = 1; i < itemID; i++) {
             NFT_Item memory item = idToItem[i];
-            if ((item.owner == msg.sender) && (item.minter != msg.sender)) {
+            if ((item.owner == msg.sender)) {
                 itemId[curr] = item.itemId;
                 itemContract[curr] = item.itemContract;
                 tokenId[curr] = item.tokenId;
