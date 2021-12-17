@@ -26,11 +26,6 @@ const Topbar = () => {
                                     My Collection
                                 </span>
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/add-item">
-                                <span className="topbar-links">
-                                    Add Item
-                                </span>
-                            </Nav.Link>
                             <Nav.Link as={Link} to="/create-nft">
                                 <span className="topbar-links">
                                     Create NFT

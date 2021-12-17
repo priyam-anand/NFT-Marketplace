@@ -6,7 +6,6 @@ import "./App.css";
 import Explore from './Pages/Explore/Explore.jsx';
 import Collection from './Pages/Collection/Collection.jsx';
 import CreateNFT from './Pages/CreateNFT/CreateNFT.jsx';
-import AddItem from './Pages/AddItem/AddItem.jsx';
 
 const App = () => {
   return (
@@ -24,9 +23,6 @@ const App = () => {
         </Route>
         <Route exact path="/create-nft">
           <CreateNFT/>
-        </Route>
-        <Route exact path="/add-item">
-          <AddItem/>
         </Route>
         <Route>
           <Redirect to="/"/>

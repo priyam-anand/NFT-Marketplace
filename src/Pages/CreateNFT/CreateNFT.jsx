@@ -15,8 +15,9 @@ const CreateNFT = () => {
     const [itemContract, setItemContract] = useState(undefined);
     const [ipfs, setIpfs] = useState(undefined);
     const history = useHistory();
-    const [fileUrl, setFileUrl] = useState(null)
-    const [formInput, setFormInput] = useState({ name: '', description: '' })
+    const [fileUrl, setFileUrl] = useState(null);
+    const [formInput, setFormInput] = useState({ name: '', description: '' });
+    const [itemAddress, setItemAddress] = useState(undefined);
 
     const isReady = () => {
         return (
@@ -48,6 +49,7 @@ const CreateNFT = () => {
                 );
                 const ipfsNode = create('https://ipfs.infura.io:5001');
 
+                setItemAddress(itemNetwork.address);
                 setWeb3(web3);
                 setAccounts(accounts);
                 setIpfs(ipfsNode);
@@ -98,15 +100,26 @@ const CreateNFT = () => {
         }
     }
 
-    const createToken = async(url) => {
-        try{
-            const token = await itemContract.methods.createToken(url).send({from:accounts[0]});
+    const createToken = async (url) => {
+        try {
+            const token = await itemContract.methods.createToken(url).send({ from: accounts[0] });
             const tokenId = token.events.Mint.returnValues[0];
-            window.alert("NFT created with Token ID : "+tokenId);
-            setFormInput({name:"",description:""})
-            setFileUrl(null);
-        }catch(error){
+            addItem(tokenId);
+        } catch (error) {
             window.alert("Could not create token")
+        }
+    }
+
+    const addItem = async (tokenId) => {
+        try {
+            const listingPrice = await marketplaceContract.methods.getCommission().call();
+            await marketplaceContract.methods.createItem(itemAddress, tokenId).send({ from: accounts[0], value: listingPrice.toString() });
+            window.alert("Created new NFT");
+            setFormInput({ name: "", description: "" })
+            setFileUrl(null);
+        } catch (error) {
+            console.log(error);
+            window.alert("Could not add Item to your collection")
         }
     }
 

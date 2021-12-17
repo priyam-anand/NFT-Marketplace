@@ -57,7 +57,6 @@ contract Marketplace {
         the owner of the token can only list the token
         - intially the item is not listed for sale
         - the owner and minter of the token is set to msg.sender and it's price is set to 0
-
     */
     function createItem(address itemContract, uint256 tokenId)
         public
