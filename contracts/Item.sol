@@ -18,7 +18,7 @@ event Mint(uint _tokenId);
         tokenId = 1;
     }
 
-    function createToken(string memory _tokenURI) public {
+    function createToken(string memory _tokenURI) public{
         
         _mint(msg.sender,tokenId);
         _setTokenURI(tokenId, _tokenURI);
