@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
+pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Marketplace {
-
     /*
         - this struct is used to store the details of the Items
      */
@@ -145,23 +145,48 @@ contract Marketplace {
         - iterater over all the items and add them to the array if their listing status is true
         - return the struct array
     */
-    function getMarketItems() public view returns (NFT_Item[] memory) {
+    function getMarketItems()
+        public
+        view
+        returns (
+            uint256[] memory,
+            address[] memory,
+            uint256[] memory,
+            address payable[] memory,
+            address payable[] memory,
+            uint256[] memory,
+            bool[] memory
+        )
+    {
         uint256 availiable = 0;
         for (uint256 i = 1; i < itemID; i++) {
-            if (idToItem[i].listed) {
+            if (idToItem[i].listed == true) {
                 availiable++;
             }
         }
 
-        NFT_Item[] memory items = new NFT_Item[](availiable);
+        uint256[] memory itemId = new uint256[](availiable);
+        address[] memory itemContract = new address[](availiable);
+        uint256[] memory tokenId = new uint256[](availiable);
+        address payable[] memory minters = new address payable[](availiable);
+        address payable[] memory owners = new address payable[](availiable);
+        uint256[] memory price = new uint256[](availiable);
+        bool[] memory listed = new bool[](availiable);
         uint256 curr = 0;
         for (uint256 i = 0; i < itemID; i++) {
+            NFT_Item memory item = idToItem[i];
             if (!idToItem[i].listed) {
-                items[curr] = idToItem[i];
+                itemId[curr] = item.itemId;
+                itemContract[curr] = item.itemContract;
+                tokenId[curr] = item.tokenId;
+                minters[curr] = item.minter;
+                owners[curr] = item.owner;
+                price[curr] = item.price;
+                listed[curr] = item.listed;
                 curr++;
             }
         }
-        return items;
+        return (itemId, itemContract, tokenId, minters, owners, price, listed);
     }
 
     /*
@@ -171,28 +196,48 @@ contract Marketplace {
         - iterater over all the items and add them to the array if given condition is true
         - return the struct array
      */
-    function getBoughtItems() public view returns (NFT_Item[] memory) {
+    function getBoughtItems()
+        public
+        view
+        returns (
+            uint256[] memory,
+            address[] memory,
+            uint256[] memory,
+            address payable[] memory,
+            address payable[] memory,
+            uint256[] memory,
+            bool[] memory
+        )
+    {
         uint256 count = 0;
         for (uint256 i = 1; i < itemID; i++) {
-            if (
-                (idToItem[i].owner == msg.sender) &&
-                (idToItem[i].minter != msg.sender)
-            ) {
+            if ((idToItem[i].owner == msg.sender)) {
                 count++;
             }
         }
-        NFT_Item[] memory items = new NFT_Item[](count);
+        uint256[] memory itemId = new uint256[](count);
+        address[] memory itemContract = new address[](count);
+        uint256[] memory tokenId = new uint256[](count);
+        address payable[] memory minters = new address payable[](count);
+        address payable[] memory owners = new address payable[](count);
+        uint256[] memory price = new uint256[](count);
+        bool[] memory listed = new bool[](count);
+
         uint256 curr = 0;
         for (uint256 i = 1; i < itemID; i++) {
-            if (
-                (idToItem[i].owner == msg.sender) &&
-                (idToItem[i].minter != msg.sender)
-            ) {
-                items[curr] = idToItem[i];
+            NFT_Item memory item = idToItem[i];
+            if ((item.owner == msg.sender) && (item.minter != msg.sender)) {
+                itemId[curr] = item.itemId;
+                itemContract[curr] = item.itemContract;
+                tokenId[curr] = item.tokenId;
+                minters[curr] = item.minter;
+                owners[curr] = item.owner;
+                price[curr] = item.price;
+                listed[curr] = item.listed;
                 curr++;
             }
         }
-        return items;
+        return (itemId, itemContract, tokenId, minters, owners, price, listed);
     }
 
     /*
@@ -202,22 +247,48 @@ contract Marketplace {
         - iterater over all the items and add them to the array if given condition is true
         - return the struct array
     */
-    function getCreatedItems() public view returns (NFT_Item[] memory) {
+    function getCreatedItems()
+        public
+        view
+        returns (
+            uint256[] memory,
+            address[] memory,
+            uint256[] memory,
+            address payable[] memory,
+            address payable[] memory,
+            uint256[] memory,
+            bool[] memory
+        )
+    {
         uint256 count = 0;
         for (uint256 i = 1; i < itemID; i++) {
             if (idToItem[i].minter == msg.sender) {
                 count++;
             }
         }
-        NFT_Item[] memory items = new NFT_Item[](count);
+        uint256[] memory itemId = new uint256[](count);
+        address[] memory itemContract = new address[](count);
+        uint256[] memory tokenId = new uint256[](count);
+        address payable[] memory minters = new address payable[](count);
+        address payable[] memory owners = new address payable[](count);
+        uint256[] memory price = new uint256[](count);
+        bool[] memory listed = new bool[](count);
+
         uint256 curr = 0;
         for (uint256 i = 1; i < itemID; i++) {
-            if (idToItem[i].minter != msg.sender) {
-                items[curr] = idToItem[i];
+            NFT_Item memory item = idToItem[i];
+            if (item.minter == msg.sender) {
+                itemId[curr] = item.itemId;
+                itemContract[curr] = item.itemContract;
+                tokenId[curr] = item.tokenId;
+                minters[curr] = item.minter;
+                owners[curr] = item.owner;
+                price[curr] = item.price;
+                listed[curr] = item.listed;
                 curr++;
             }
         }
-        return items;
+        return (itemId, itemContract, tokenId, minters, owners, price, listed);
     }
 
     /*

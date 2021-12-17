@@ -21,7 +21,8 @@ const Card2 = ({ owned }) => {
                         {owned
                             ? <></>
                             : <form className="list">
-                                <input type="number" className="form-control" required placeholder='Price' />
+                                <input type="number" 
+                                style={{"height":"2.5rem"}} className="sign__input" required placeholder='Price' />
                                 <button className='sell-btn'>List</button>
                             </form>}
                     </div>
