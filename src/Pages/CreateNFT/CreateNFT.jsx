@@ -46,7 +46,6 @@ const CreateNFT = () => {
                     </form>
                 </div>
             </div>
-
         </>
     )
 }
