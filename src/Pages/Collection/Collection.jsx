@@ -16,7 +16,6 @@ const Collection = () => {
     const [itemContract, setItemContract] = useState(undefined);
     const [ipfs, setIpfs] = useState(undefined);
     const history = useHistory();
-    const [itemAddress, setItemAddress] = useState(undefined);
     const [ownedItem, setOwnedItem] = useState([]);
     const [mintedItem, setMintedItem] = useState([]);
     const [listedItem, setListedItem] = useState([]);
@@ -103,7 +102,6 @@ const Collection = () => {
                 );
                 const ipfsNode = create('https://ipfs.infura.io:5001');
 
-                setItemAddress(itemNetwork.address);
                 setWeb3(web3);
                 setAccounts(accounts);
                 setIpfs(ipfsNode);
@@ -126,7 +124,7 @@ const Collection = () => {
         if (isReady()) {
             getData();
         }
-    }, [typeof marketplaceContract]);
+    }, [marketplaceContract, accounts]);
 
     const handleListing = async (e) => {
         e.preventDefault();

@@ -13,7 +13,6 @@ const Card2 = ({ owned, data, itemContract, handleListing }) => {
             const getToken = async () => {
                 const uri = await itemContract.methods.tokenURI(data.tokenId).call();
                 const metaData = await axios.get(uri);
-                // console.log(metaData.data);
                 setToken(metaData.data);
                 setIsLoading(false);
             }

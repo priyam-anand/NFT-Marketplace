@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 
-const Card = ({ data, itemContract }) => {
+const Card = ({web3, data, itemContract, handleBuying }) => {
 
     const [token, setToken] = useState({ name: "", description: "", image: "" });
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         if (itemContract !== undefined) {
             const getToken = async () => {
@@ -33,20 +33,25 @@ const Card = ({ data, itemContract }) => {
                     </>
                     : <>
                         <span className="card__cover">
-                            <img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/43YAWLITTZJLZIQTCP2JSS4KSM.jpg" alt="" />
+                            <img src={token.image} alt="" />
                         </span>
                         <h4 className="card__title">
-                            <Link to="/explore">Walking on Air</Link>
+                            <Link to="/explore">{token.name}</Link>
                         </h4>
                         <p className='card__desc'>
-                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
+                            {token.description}
                         </p>
                         <div className="card__info mx-auto">
                             <div className="card__price">
                                 <span>Price</span>
-                                <span>4.89 ETH</span>
+                                <span>{web3.utils.fromWei(data.price, 'ether')} ETH</span>
                             </div>
-                            <button className="sell-btn"> Buy </button>
+                            <form onSubmit={handleBuying}>
+                                <input type="number" value={data.itemId} onChange={e=>console.log(e)} style={{"display":"none"}}/>
+                                <input type="number" value={data.price} onChange={e=>console.log(e)} style={{"display":"none"}}/>
+                                <button type="submit" className="sell-btn"> Buy </button>
+                            </form>
+                            
                         </div>
                     </>
             }

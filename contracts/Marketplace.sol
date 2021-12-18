@@ -190,7 +190,7 @@ contract Marketplace {
     }
 
     /*
-        - this function returns all the items bought by the current user
+        - this function returns all the items bought by the current user that are not listed
         - iterater over all the NFT_Items and count the number of items which the user is the owner of but not the minter
         - then create an array of type NFT_Item of the given size
         - iterater over all the items and add them to the array if given condition is true
@@ -240,7 +240,13 @@ contract Marketplace {
         return (itemId, itemContract, tokenId, minters, owners, price, listed);
     }
 
-
+    /*
+        - this function returns all the items bought by the current user which are listed
+        - iterater over all the NFT_Items and count the number of items which the user is the owner of but not the minter
+        - then create an array of type NFT_Item of the given size
+        - iterater over all the items and add them to the array if given condition is true
+        - return the struct array
+     */
     function getListedItems()
         public
         view
