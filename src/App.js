@@ -13,22 +13,19 @@ const App = () => {
       <Topbar />
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
         <Route exact path="/explore">
-          <Explore/>
+          <Explore />
         </Route>
         <Route exact path="/my-collection">
-          <Collection/>
+          <Collection />
         </Route>
         <Route exact path="/create-nft">
-          <CreateNFT/>
-        </Route>
-        <Route exact path="/NFT-Marketplace">
-          <Home/>
+          <CreateNFT />
         </Route>
         <Route>
-          <Redirect to="/NFT-Marketplace"/>
+          <Home />
         </Route>
       </Switch>
     </>

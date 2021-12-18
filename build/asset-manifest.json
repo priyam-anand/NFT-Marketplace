@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/NFT-Marketplace/static/css/main.89b61efa.chunk.css",
-    "main.js": "/NFT-Marketplace/static/js/main.879efa61.chunk.js",
-    "main.js.map": "/NFT-Marketplace/static/js/main.879efa61.chunk.js.map",
+    "main.js": "/NFT-Marketplace/static/js/main.d2c0fd37.chunk.js",
+    "main.js.map": "/NFT-Marketplace/static/js/main.d2c0fd37.chunk.js.map",
     "runtime-main.js": "/NFT-Marketplace/static/js/runtime-main.f04fd2bd.js",
     "runtime-main.js.map": "/NFT-Marketplace/static/js/runtime-main.f04fd2bd.js.map",
     "static/css/2.0a9ec390.chunk.css": "/NFT-Marketplace/static/css/2.0a9ec390.chunk.css",
-    "static/js/2.5f54689b.chunk.js": "/NFT-Marketplace/static/js/2.5f54689b.chunk.js",
-    "static/js/2.5f54689b.chunk.js.map": "/NFT-Marketplace/static/js/2.5f54689b.chunk.js.map",
+    "static/js/2.d7e348fd.chunk.js": "/NFT-Marketplace/static/js/2.d7e348fd.chunk.js",
+    "static/js/2.d7e348fd.chunk.js.map": "/NFT-Marketplace/static/js/2.d7e348fd.chunk.js.map",
     "index.html": "/NFT-Marketplace/index.html",
     "static/css/2.0a9ec390.chunk.css.map": "/NFT-Marketplace/static/css/2.0a9ec390.chunk.css.map",
     "static/css/main.89b61efa.chunk.css.map": "/NFT-Marketplace/static/css/main.89b61efa.chunk.css.map",
-    "static/js/2.5f54689b.chunk.js.LICENSE.txt": "/NFT-Marketplace/static/js/2.5f54689b.chunk.js.LICENSE.txt"
+    "static/js/2.d7e348fd.chunk.js.LICENSE.txt": "/NFT-Marketplace/static/js/2.d7e348fd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f04fd2bd.js",
     "static/css/2.0a9ec390.chunk.css",
-    "static/js/2.5f54689b.chunk.js",
+    "static/js/2.d7e348fd.chunk.js",
     "static/css/main.89b61efa.chunk.css",
-    "static/js/main.879efa61.chunk.js"
+    "static/js/main.d2c0fd37.chunk.js"
   ]
 }
