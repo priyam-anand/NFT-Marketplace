@@ -45,7 +45,6 @@ const Explore = () => {
                     listed: listed[6][i]
                 })
             }
-            console.log(listedI);
             setListedItem(listedI);
         } catch (error) {
             console.log(error)

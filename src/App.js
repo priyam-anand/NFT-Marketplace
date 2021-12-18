@@ -24,8 +24,11 @@ const App = () => {
         <Route exact path="/create-nft">
           <CreateNFT/>
         </Route>
+        <Route exact path="/NFT-Marketplace">
+          <Home/>
+        </Route>
         <Route>
-          <Redirect to="/"/>
+          <Redirect to="/NFT-Marketplace"/>
         </Route>
       </Switch>
     </>
