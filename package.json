@@ -19,11 +19,14 @@
     "web-vitals": "^2.1.2",
     "web3": "^1.6.0"
   },
+  "homepage": "http://priyam-anand.github.io/NFT-Marketplace",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
