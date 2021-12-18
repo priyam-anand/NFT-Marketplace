@@ -211,7 +211,7 @@ contract Marketplace {
     {
         uint256 count = 0;
         for (uint256 i = 1; i < itemID; i++) {
-            if ((idToItem[i].owner == msg.sender)) {
+            if (idToItem[i].owner == msg.sender && idToItem[i].listed == false) {
                 count++;
             }
         }
@@ -226,7 +226,52 @@ contract Marketplace {
         uint256 curr = 0;
         for (uint256 i = 1; i < itemID; i++) {
             NFT_Item memory item = idToItem[i];
-            if ((item.owner == msg.sender)) {
+            if ((item.owner == msg.sender && item.listed == false)) {
+                itemId[curr] = item.itemId;
+                itemContract[curr] = item.itemContract;
+                tokenId[curr] = item.tokenId;
+                minters[curr] = item.minter;
+                owners[curr] = item.owner;
+                price[curr] = item.price;
+                listed[curr] = item.listed;
+                curr++;
+            }
+        }
+        return (itemId, itemContract, tokenId, minters, owners, price, listed);
+    }
+
+
+    function getListedItems()
+        public
+        view
+        returns (
+            uint256[] memory,
+            address[] memory,
+            uint256[] memory,
+            address payable[] memory,
+            address payable[] memory,
+            uint256[] memory,
+            bool[] memory
+        )
+    {
+        uint256 count = 0;
+        for (uint256 i = 1; i < itemID; i++) {
+            if (idToItem[i].owner == msg.sender && idToItem[i].listed == true) {
+                count++;
+            }
+        }
+        uint256[] memory itemId = new uint256[](count);
+        address[] memory itemContract = new address[](count);
+        uint256[] memory tokenId = new uint256[](count);
+        address payable[] memory minters = new address payable[](count);
+        address payable[] memory owners = new address payable[](count);
+        uint256[] memory price = new uint256[](count);
+        bool[] memory listed = new bool[](count);
+
+        uint256 curr = 0;
+        for (uint256 i = 1; i < itemID; i++) {
+            NFT_Item memory item = idToItem[i];
+            if ((item.owner == msg.sender && item.listed == true)) {
                 itemId[curr] = item.itemId;
                 itemContract[curr] = item.itemContract;
                 tokenId[curr] = item.tokenId;

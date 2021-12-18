@@ -19,6 +19,7 @@ const Collection = () => {
     const [itemAddress, setItemAddress] = useState(undefined);
     const [ownedItem, setOwnedItem] = useState([]);
     const [mintedItem, setMintedItem] = useState([]);
+    const [listedItem, setListedItem] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const isReady = () => {
@@ -29,6 +30,57 @@ const Collection = () => {
             && typeof accounts !== 'undefined'
             && typeof ipfs !== 'undefined'
         );
+    }
+
+    const getData = async () => {
+        try {
+            const boughtI = [];
+            const bought = await marketplaceContract.methods.getBoughtItems().call({ from: accounts[0] });
+            for (let i = 0; i < bought[0].length; i++) {
+                boughtI.push({
+                    itemId: bought[0][i],
+                    itemContract: bought[1][i],
+                    tokenId: bought[2][i],
+                    minter: bought[3][i],
+                    owner: bought[4][i],
+                    price: bought[5][i],
+                    listed: bought[6][i]
+                })
+            }
+            const ownedI = [];
+            const owned = await marketplaceContract.methods.getCreatedItems().call({ from: accounts[0] });
+            for (let i = 0; i < owned[0].length; i++) {
+                ownedI.push({
+                    itemId: owned[0][i].toString(),
+                    itemContract: owned[1][i],
+                    tokenId: owned[2][i],
+                    minter: owned[3][i],
+                    owner: owned[4][i],
+                    price: owned[5][i],
+                    listed: owned[6][i]
+                })
+            }
+            const listedI = [];
+            const listed = await marketplaceContract.methods.getListedItems().call({ from: accounts[0] });
+            for (let i = 0; i < listed[0].length; i++) {
+                listedI.push({
+                    itemId: listed[0][i].toString(),
+                    itemContract: listed[1][i],
+                    tokenId: listed[2][i],
+                    minter: listed[3][i],
+                    owner: listed[4][i],
+                    price: listed[5][i],
+                    listed: listed[6][i]
+                })
+            }
+
+            setListedItem(listedI);
+            setMintedItem(ownedI);
+            setOwnedItem(boughtI);
+        } catch (error) {
+            console.log(error)
+        }
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -72,54 +124,30 @@ const Collection = () => {
 
     useEffect(() => {
         if (isReady()) {
-            const getData = async () => {
-                try {
-                    const boughtI = [];
-                    const bought = await marketplaceContract.methods.getBoughtItems().call({ from: accounts[0] });
-                    for(let i=0;i<bought[0].length;i++)
-                    {
-                        boughtI.push({
-                            itemId : bought[0][i],
-                            itemContract : bought[1][i],
-                            tokenId : bought[2][i],
-                            minter : bought[3][i],
-                            owner : bought[4][i],
-                            price : bought[5][i],
-                            listed : bought[6][i]
-                        })
-                    }
-                    const ownedI = [];
-                    const owned = await marketplaceContract.methods.getCreatedItems().call({ from: accounts[0] });
-
-                    for(let i=0;i<owned[0].length;i++)
-                    {
-                        ownedI.push({
-                            itemId : owned[0][i].toString(),
-                            itemContract : owned[1][i],
-                            tokenId : owned[2][i],
-                            minter : owned[3][i],
-                            owner : owned[4][i],
-                            price : owned[5][i],
-                            listed : owned[6][i]
-                        })
-                    }
-                    console.log("bought",bought);
-                    console.log("boughtI",boughtI);
-                    setMintedItem(ownedI);
-                    setOwnedItem(boughtI);
-                } catch (error) {
-                    console.log(error)
-                }
-                setIsLoading(false);
-            }
             getData();
         }
     }, [typeof marketplaceContract]);
 
+    const handleListing = async (e) => {
+        e.preventDefault();
+        const price = web3.utils.toWei(e.target[0].value, 'ether');
+        const itemId = e.target[1].value;
+
+        try {
+            await marketplaceContract.methods.listItem(itemId, price).send({ from: accounts[0] });
+        } catch (error) {
+            console.log(error);
+            window.alert("could not list the NFT");
+        }
+
+        setIsLoading(true);
+        getData();
+    }
+
     if (!isReady() || isLoading) {
         return <Loading />;
     }
-    console.log(ownedItem);
+
     return (
         <>
             <div className="container top-space">
@@ -135,8 +163,29 @@ const Collection = () => {
                     <div className="col-12 order-xl-1">
                         <div className="row">
                             {ownedItem.length > 0
-                                ? (ownedItem.map((item,index)=>{
-                                    return <div key={index}><Card2 data={item}/></div>
+                                ? (ownedItem.map((item, index) => {
+                                    return <div key={index} className="col-12 col-lg-6"><Card2 data={item} itemContract={itemContract} handleListing={handleListing} /></div>
+                                }))
+                                : <h4 style={{ "color": "white" }} className="mt-3 mx-auto">Nothing Here</h4>}
+                        </div>
+                    </div>
+                </div>
+                <hr style={{ "color": "white", "marginTop": "2rem" }} />
+
+                <div className="row">
+                    <div className="col-12">
+                        <div className="main__title main__title--page">
+                            <h1>My Listed</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-12 order-xl-1">
+                        <div className="row">
+                            {listedItem.length > 0
+                                ? (listedItem.map((item, index) => {
+                                    return <div key={index} className="col-12 col-lg-6"><Card2 data={item} itemContract={itemContract} owned={true} /></div>
                                 }))
                                 : <h4 style={{ "color": "white" }} className="mt-3 mx-auto">Nothing Here</h4>}
                         </div>
@@ -153,8 +202,8 @@ const Collection = () => {
                     <div className="col-12 order-xl-1">
                         <div className="row">
                             {mintedItem.length > 0
-                                ? (mintedItem.map((item,index)=>{
-                                    return <div key={index}><Card2 owned={true} data={item}/></div>
+                                ? (mintedItem.map((item, index) => {
+                                    return <div key={index} className="col-12 col-lg-6" ><Card2 owned={true} data={item} itemContract={itemContract} /></div>
                                 }))
                                 : <h4 style={{ "color": "white" }} className="mt-3 mx-auto">Nothing Here</h4>}
                         </div>
