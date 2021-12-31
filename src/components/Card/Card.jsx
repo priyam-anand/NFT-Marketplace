@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 
-const Card = ({web3, data, itemContract, handleBuying }) => {
+const Card = ({web3, data, itemContract, handleBuying, account}) => {
 
+    console.log(data);
     const [token, setToken] = useState({ name: "", description: "", image: "" });
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
@@ -13,7 +14,6 @@ const Card = ({web3, data, itemContract, handleBuying }) => {
             const getToken = async () => {
                 const uri = await itemContract.methods.tokenURI(data.tokenId).call();
                 const metaData = await axios.get(uri);
-                console.log(metaData.data);
                 setToken(metaData.data);
                 setIsLoading(false);
             }
@@ -49,9 +49,15 @@ const Card = ({web3, data, itemContract, handleBuying }) => {
                             <form onSubmit={handleBuying}>
                                 <input type="number" value={data.itemId} onChange={e=>console.log(e)} style={{"display":"none"}}/>
                                 <input type="number" value={data.price} onChange={e=>console.log(e)} style={{"display":"none"}}/>
-                                <button type="submit" className="sell-btn"> Buy </button>
+                                
+                                {
+                                    data.owner === account[0]
+                                    ? <button type="submit" className="sell-btn-already-onwed" disabled> Already Owned </button>
+                                    : <button type="submit" className="sell-btn"> Buy </button>
+                                }
+
+                                
                             </form>
-                            
                         </div>
                     </>
             }

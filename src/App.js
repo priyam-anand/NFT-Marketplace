@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Topbar from './components/Topbar/Topbar.jsx';
 import Home from './Pages/Home/Home.jsx';
 import "./App.css";

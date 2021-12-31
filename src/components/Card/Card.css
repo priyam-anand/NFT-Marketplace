@@ -100,3 +100,22 @@
       margin-top: 30px;
     }
   }
+  .sell-btn-already-onwed {
+    width: auto;
+    min-width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 12px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 2;
+    text-transform: uppercase;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    padding: 0 20px;
+    background-color: #6164ff;
+    color: #fff;
+  }

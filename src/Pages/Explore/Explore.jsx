@@ -131,7 +131,7 @@ const Explore = () => {
                         {
                             listedItem.length > 0
                                 ? (listedItem.map((item, index) => {
-                                    return <div className="col-12 col-sm-6 col-lg-4 col-xl-3" key={index}><Card data={item} itemContract={itemContract} web3={web3} handleBuying={handleBuying} /></div>
+                                    return <div className="col-12 col-sm-6 col-lg-4 col-xl-3" key={index}><Card data={item} itemContract={itemContract} web3={web3} handleBuying={handleBuying} account={accounts}/></div>
                                 }))
                                 : <h4 style={{ "color": "white" }} className="mt-3 mx-auto">Nothing Here</h4>
                         }
